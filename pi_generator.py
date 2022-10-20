@@ -31,18 +31,15 @@ def main():
         da = ta[0] * ta[1] * ta[2]
         db = tb[0] * tb[1] * tb[2]
        
-        Npi = (Npi*da)+(Dpi*4)
-        Dpi = Dpi*da
-
-        Npi = (Npi*db)-(Dpi*4)
-        Dpi = Dpi*db
+        Npi = ( ((Npi*da) + (Dpi*4)) * db) - (Dpi*4)
+        Dpi *= da*db
 
     etime = time.time()
     if printing.lower() == "true":
-        print(f"\n{Npi}\n\n{Dpi}\n\n{Npi/Dpi}\n\n{len(str(Npi))}\n\n{len(str(Dpi))}\n\n{etime-stime}")
+        print(f"\n{Npi}\n\n{Dpi}\n\n{len(str(Npi))}\n\n{len(str(Dpi))}\n\n{etime-stime}")
 
     eetime = time.time()
-    print(f"\n{eetime-stime}")
+    print(f"\n\n{Npi/Dpi}\n\n{eetime-stime}")
     
 
 if __name__ == "__main__":
